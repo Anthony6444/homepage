@@ -1,13 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Svelte</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
-</html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<main>
+    <div class="container">
+        <h1>SearchEngineName</h1>
+        <div class="search-box">
+            <div class="search-icon"><i class="fa fa-search search-icon"></i></div>
+            <form action="/api/search" method="GET" class="search-form">
+                <input type="text" placeholder="Search" id="search" name="q" autocomplete="off">
+                <input type="hidden" id="uuid" name="uuid">
+            </form>
+            <svg class="search-border" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+                x="0px" y="0px" viewBox="0 0 671 111" style="enable-background:new 0 0 671 111;" xml:space="preserve">
+                <path class="border" d="M335.5,108.5h-280c-29.3,0-53-23.7-53-53v0c0-29.3,23.7-53,53-53h280" />
+                <path class="border" d="M335.5,108.5h280c29.3,0,53-23.7,53-53v0c0-29.3-23.7-53-53-53h-280" />
+            </svg>
+            <div class="go-icon"><i class="fa fa-arrow-right"></i></div>
+        </div>
+
+    </div>
+</main>
+
+<script>
+    $(document).ready(function () {
+        $("#search").focus(function () {
+            $(".search-box").addClass("border-searching");
+            $(".search-icon").addClass("si-rotate");
+        });
+        $("#search").blur(function () {
+            $(".search-box").removeClass("border-searching");
+            $(".search-icon").removeClass("si-rotate");
+        });
+        $("#search").keyup(function () {
+            if ($(this).val().length > 0) {
+                $(".go-icon").addClass("go-in");
+            }
+            else {
+                $(".go-icon").removeClass("go-in");
+            }
+        });
+        $(".go-icon").click(function () {
+            $(".search-form").submit();
+        });
+    });
+
+</script>
