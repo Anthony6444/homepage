@@ -1,54 +1,19 @@
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <link rel="stylesheet"
-        href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
-    <link rel="stylesheet" href="/static/style.css">
+  <meta charset="UTF-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome-font-awesome.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homepage</title>
 </head>
 
-<main>
-    <div class="container">
-        <h1>SearchEngineName</h1>
-        <div class="search-box">
-            <div class="search-icon"><i class="fa fa-search search-icon"></i></div>
-            <form action="/api/search" method="GET" class="search-form">
-                <input type="text" placeholder="Search" id="search" name="q" autocomplete="off">
-                <input type="hidden" id="uuid" name="uuid">
-            </form>
-            <svg class="search-border" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-                x="0px" y="0px" viewBox="0 0 671 111" style="enable-background:new 0 0 671 111;" xml:space="preserve">
-                <path class="border" d="M335.5,108.5h-280c-29.3,0-53-23.7-53-53v0c0-29.3,23.7-53,53-53h280" />
-                <path class="border" d="M335.5,108.5h280c29.3,0,53-23.7,53-53v0c0-29.3-23.7-53-53-53h-280" />
-            </svg>
-            <div class="go-icon"><i class="fa fa-arrow-right"></i></div>
-        </div>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
 
-    </div>
-</main>
-
-<script>
-    $(document).ready(function () {
-        $("#search").focus(function () {
-            $(".search-box").addClass("border-searching");
-            $(".search-icon").addClass("si-rotate");
-        });
-        $("#search").blur(function () {
-            $(".search-box").removeClass("border-searching");
-            $(".search-icon").removeClass("si-rotate");
-        });
-        $("#search").keyup(function () {
-            if ($(this).val().length > 0) {
-                $(".go-icon").addClass("go-in");
-            }
-            else {
-                $(".go-icon").removeClass("go-in");
-            }
-        });
-        $(".go-icon").click(function () {
-            $(".search-form").submit();
-        });
-    });
-
-</script>
+</html>

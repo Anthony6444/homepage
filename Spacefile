@@ -15,6 +15,5 @@ micros:
 
   - name: frontend
     src: ./frontend/
-    engine: static
-    dev: serve %PORT%
+    engine: svelte
     primary: true
