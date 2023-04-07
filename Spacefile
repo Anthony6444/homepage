@@ -12,6 +12,7 @@ micros:
     src: ./static/
     engine: static
     dev: serve %PORT%
+    public: true
 
   - name: frontend
     src: ./frontend/
